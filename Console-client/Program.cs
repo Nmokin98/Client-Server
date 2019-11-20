@@ -15,13 +15,19 @@ namespace SocketClient
 
         static void Main (string[] args)
         {
-            socket.Connect("127.0.0.1", 904);//Подключение к серверу
-            string message = Console.ReadLine();//Считываем сообщение пользователя
-            byte[] buffer = Encoding.ASCII.GetBytes(message);//Кодировка массива байтов
-            socket.Send(buffer);//Отправка
-            Console.ReadLine();
-            socket.Shutdown(SocketShutdown.Both);
-            socket.Close();
+            
+         socket.Connect("127.0.0.1", 904);//Подключение к серверу
+          string message = Console.ReadLine();//Считываем сообщение пользователя
+          byte[] buffer = Encoding.ASCII.GetBytes(message);//Кодировка массива байтов
+          socket.Send(buffer);//Отправка  
+          while (true)
+          {
+          Console.ReadLine();
+          }
+          socket.Shutdown(SocketShutdown.Both);
+          socket.Close();
+                
+            
         }
     }
  
