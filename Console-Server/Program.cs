@@ -12,12 +12,14 @@ namespace Console_Server
         {
             socket.Bind(new IPEndPoint(IPAddress.Any,904));
             socket.Listen(5);//Слушает подключения. Максимальное количество может обработать.
-           Socket client = socket.Accept();//Принятие
+            Socket client = socket.Accept();//Принятие
             Console.WriteLine("Новое подключение");
             byte[] buffer = new byte[1024];
             client.Receive(buffer);//Получаем от подкюченного сокета данные
             Console.WriteLine(Encoding.ASCII.GetString(buffer));//Вывод данных на экран
             Console.ReadLine();
+            socket.Shutdown(SocketShutdown.Both);
+            socket.Close();// Освобождаем и закрываем порт
         }
     }
 }

@@ -7,8 +7,9 @@ namespace SocketClient
 {
     class Program
     {
-        static Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);// Класс Socket для сетевого взаимодействия
-        /*AddressFamily: возвращает все адреса, используемые сокетом, InterNetwork: адрес по протоколу IPv4
+        static Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        /*Класс Socket для сетевого взаимодействия
+         * AddressFamily: возвращает все адреса, используемые сокетом, InterNetwork: адрес по протоколу IPv4
          * SocketType: возвращает тип сокета, Stream: обеспечивает надежную двустороннюю передачу данныx
          * ProtocolType: возвращает одно из значений перечисления*/
 
@@ -19,7 +20,8 @@ namespace SocketClient
             byte[] buffer = Encoding.ASCII.GetBytes(message);//Кодировка массива байтов
             socket.Send(buffer);//Отправка
             Console.ReadLine();
-
+            socket.Shutdown(SocketShutdown.Both);
+            socket.Close();
         }
     }
  
