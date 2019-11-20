@@ -22,7 +22,7 @@ namespace Console_Server
                 Console.ReadLine();
                 socket.Shutdown(SocketShutdown.Both);
                 socket.Close();// Освобождаем и закрываем порт
-            }
+            
         }
     }
 }
